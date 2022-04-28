@@ -32,8 +32,16 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
       <% if user_signed_in? %>
+      <li class="nav-item">
+        <%= link_to 'Home', "/", :class => 'nav-link active' %> 
+      
+        </li>
         <li class="nav-item">
-        <%= link_to 'Edit profile', edit_user_registration_path, :class => 'nav-link active' %> 
+        <%= link_to 'Add Post', new_path, :class => 'nav-link' %> 
+      
+        </li>
+        <li class="nav-item">
+        <%= link_to 'Edit profile', edit_user_registration_path, :class => 'nav-link' %> 
       
         </li>
         <li class="nav-item">
