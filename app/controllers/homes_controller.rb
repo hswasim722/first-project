@@ -1,9 +1,13 @@
-class HomesController < ActionController::Base
-    layout "application"
+class HomesController < ApplicationController
+  include Pagy::Backend
+  include Pagy::Frontend  
+  layout "application"
     def homepage
-        @post=Post.all
+      
+      #@post=Post.order("created_at DESC")
+        @pagy, @post = pagy(Post.order("created_at DESC"), page: params[:page],items: 2)
     end
-    def showpage
+    def show
         @post = Post.find(params[:id])
     end 
     def new
@@ -24,7 +28,13 @@ class HomesController < ActionController::Base
     def edit
       @post = Post.find(params[:id])
     end
-  
+    def delete_post
+      debugger
+      @post = Post.find(params[:id])
+      @post.destroy
+
+    redirect_to root_path, status: :see_other
+    end
     def update
       @post = Post.find(params[:id])
   
@@ -34,9 +44,10 @@ class HomesController < ActionController::Base
         render :edit, status: :unprocessable_entity
       end
     end
+  
     private
     def post_params
-      params.require(:post).permit(:title, :description)
+      params.require(:post).permit(:title, :description,:image)
     end
     
 end

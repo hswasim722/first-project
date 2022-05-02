@@ -1,0 +1,13 @@
+current directory: /home/ads/myapp/vendor/bundle/ruby/2.7.0/gems/json-2.6.1/ext/json
+/usr/bin/ruby2.7 -I /usr/lib/ruby/2.7.0 -r ./siteconf20220502-8683-1fcmpdw.rb extconf.rb
+creating Makefile
+
+current directory: /home/ads/myapp/vendor/bundle/ruby/2.7.0/gems/json-2.6.1/ext/json
+make "DESTDIR=" clean
+
+current directory: /home/ads/myapp/vendor/bundle/ruby/2.7.0/gems/json-2.6.1/ext/json
+make "DESTDIR="
+make: Nothing to be done for 'all'.
+
+current directory: /home/ads/myapp/vendor/bundle/ruby/2.7.0/gems/json-2.6.1/ext/json
+make "DESTDIR=" install
