@@ -5,7 +5,7 @@ class HomesController < ApplicationController
     def homepage
       
       #@post=Post.order("created_at DESC")
-        @pagy, @post = pagy(Post.order("created_at DESC"), page: params[:page],items: 2)
+        @pagy, @post = pagy(Post.order("created_at DESC"), page: params[:page],items: 3)
     end
     def show
         @post = Post.find(params[:id])
@@ -29,7 +29,7 @@ class HomesController < ApplicationController
       @post = Post.find(params[:id])
     end
     def delete_post
-      debugger
+      
       @post = Post.find(params[:id])
       @post.destroy
 

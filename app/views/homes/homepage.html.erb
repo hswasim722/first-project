@@ -3,14 +3,16 @@
 <%== pagy_bootstrap_nav(@pagy) %>
 <% @post.each do |post| %>
 <div class="card" style="width: 18rem;">
-
+<a href="/delete_post/<%= post.id %>" class="btn-close"></a>
   <%= image_tag(post.image.url, alt: 'Image', :class => "card-img-top") if post.image? %>
   <div class="card-body">
+
     <h5 class="card-title"><%= post.title %></h5>
     <p class="card-text"><%= post.description %></p>
     <a href="/show/<%= post.id %>" class="btn btn-primary">Show Post</a>
     <a href="/edit/<%= post.id %>" class="btn btn-primary">Edit Post</a>
-  
+    
+   
   </div>
 </div>
 <% end %>

@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   get '/edit/:id' ,to: "homes#edit"
   post '/updated/:id' ,to: "homes#update"
   get '/delete_post/:id' ,to: "homes#delete_post"
-
+  resources :posts do
+  resources :comments
+  end
   
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
