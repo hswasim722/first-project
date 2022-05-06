@@ -45,6 +45,7 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'carrierwave', '~> 0.11.2'
 gem 'pagy', '~> 5.10'
+gem 'pg_search'
 # Use Sass to process CSS
 # gem "sassc-rails"
 

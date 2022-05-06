@@ -1,7 +1,65 @@
 <% if user_signed_in? %>
 <h1>Posts </h1>
+<div class="row">
+<% if @post.length()>0%>
+
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+
+  <div class="carousel-indicators">
+ 
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" class="active" aria-current="true" aria-label="Slide 2"></button>
+   
+
+  </div>
+
+  <div class="carousel-inner">
+  <% @post_home.each_with_index do |post,index| %>
+    <% if index>1%>
+    <%break%>
+    <%end%>
+    <div class="carousel-item <% if index==0%>active<%end%>">
+    <%= image_tag(post.image.url, alt: 'Image', :class => "d-block w-100") if post.image? %>
+    
+      <div class="carousel-caption d-none d-md-block">
+        <h5><%= post.title %></h5>
+        <p><%= post.description %></p>
+      </div>
+    </div>
+    <%end%>
+   
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+
+  </div>
+<%end%>
+
+</div>
+<div class="row" style="text-align:center;margin-top:20px;">
+  <%= form_with(url: "/", method: :get) do |f| %>
+  <%= label_tag(:query, "Search for") %>
+  <%= text_field_tag(:query) %>
+  <%= submit_tag("Search", class: "btn btn-primary") %>
+<% end %>
+
+</div>
+<div class="row" >
+<div style="margin: 1% auto;width: auto;">
 <%== pagy_bootstrap_nav(@pagy) %>
-<% @post.each do |post| %>
+</div>
+</div>
+
+<% @post.each_with_index do |post,index| %>
+  <div class="row">
+  <div style="margin: 1% auto;width: auto;">
 <div class="card" style="width: 18rem;">
 <a href="/delete_post/<%= post.id %>" class="btn-close"></a>
   <%= image_tag(post.image.url, alt: 'Image', :class => "card-img-top") if post.image? %>
@@ -14,6 +72,8 @@
     
    
   </div>
+</div>
+</div>
 </div>
 <% end %>
 

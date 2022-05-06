@@ -1,11 +1,20 @@
 class HomesController < ApplicationController
+ 
+
   include Pagy::Backend
   include Pagy::Frontend  
   layout "application"
     def homepage
       
-      #@post=Post.order("created_at DESC")
-        @pagy, @post = pagy(Post.order("created_at DESC"), page: params[:page],items: 3)
+     # @post_home=Post.order("created_at DESC")
+     @post_home=Post.all
+      if params[:query].present?
+        
+        @pagy, @post = pagy(Post.where("title LIKE ?", "%" + params[:query] + "%"),items: 3)
+     
+      else
+        @pagy, @post = pagy(Post.all, page: params[:page],items: 3)
+      end
     end
     def show
         @post = Post.find(params[:id])

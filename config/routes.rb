@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/delete_post/:id' ,to: "homes#delete_post"
   resources :posts do
   resources :comments
+  resources :search, only: [:homepage]
   end
   
   devise_for :users
